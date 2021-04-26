@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+
 using namespace std;
 
 class Order {
@@ -11,7 +13,7 @@ class Order {
         Delivered,
         Canceled
 	};
-
+	static int count;
 	int status;
 	int userId;
 	int productId;
@@ -20,11 +22,15 @@ class Order {
 	float TotalPrice;
 	// Date DeliveryTime;
 	// Date CreationTime;
-	// unsigned long long int orderstatus;
+	time_t creationTime;
+	time_t deliveryTime;
+	// unsigned long long int orderId;
 	
 public:
-	Order(int uid, pid, q):
-	userId(uid), productId(pid), quantity(q), status(New) {
+	Order(int uid, int pid, int q):
+	orderId(++count), userId(uid), productId(pid), quantity(q), status(New), creationTime(time(0)) {
 		// ProductPrice, TotalPrice, DeliveryTime, Creation time, orderId
 	}
 };
+
+int Order::count = 0;
