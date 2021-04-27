@@ -9,10 +9,12 @@
 
 [] Processor.cs
 
+[] PriceOrderProcessor.cs
+
 [] Test.cs
 
 ## SJ Files
-[] PriceOrderProcessor.cs
+
 
 [x] OrderStatus.cs
 
@@ -26,5 +28,5 @@
 
 [x] Operation.cs
 
-[] Processor.cs
+[] Pipeline.cs
 
