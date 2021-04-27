@@ -3,21 +3,15 @@
 ## Pope Files
 [] CreateOrderProcessor.cs
 
-[] Processor.cs
-
-[] Pipeline.cs
-
-[] IOperation.cs
-
-[] Operation.cs
-
-[] Test.cs
-
-## SJ Files
 [] DeliverOrderProcessor.cs
 
 [] PaymentOrderProcessor.cs
 
+[] Pipeline.cs
+
+[] Test.cs
+
+## SJ Files
 [] PriceOrderProcessor.cs
 
 [x] OrderStatus.cs
@@ -28,3 +22,8 @@
 
 [] Program.cs
 
+[x] IOperation.cs
+
+[x] Operation.cs
+
+[] Processor.cs
