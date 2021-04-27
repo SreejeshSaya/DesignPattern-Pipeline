@@ -11,11 +11,11 @@ class CreateOrderProcessor : public Processor<Order>
     protected:
         bool Process(Order* order)
         {
-            order->OrderId = orders.size();
+            order->OrderId = this->orders.size();
             order->CreationTime = time(0);
             order->Status = OrderStatus.Created;
-            orders.push_back(order); //what is this?
-            cout<<"Create Order {"<<order.OrderId<<"}"<<endl;
+            this->orders.push_back(order); //what is this?
+            cout<<"Create Order {"<<order->OrderId<<"}"<<endl;
             return true;
         }
             
