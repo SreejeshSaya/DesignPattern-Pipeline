@@ -7,7 +7,7 @@
 
 [] PaymentOrderProcessor.cs
 
-[] Pipeline.cs
+[] Processor.cs
 
 [] Test.cs
 
@@ -27,3 +27,4 @@
 [x] Operation.cs
 
 [] Processor.cs
+
