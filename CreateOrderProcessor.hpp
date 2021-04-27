@@ -12,7 +12,7 @@ class CreateOrderProcessor : public Processor<Order>
         bool Process(Order* order)
         {
             order->OrderId = orders.Count;
-            order->CreationTime = DateTime.UtcNow;
+            order->CreationTime = time(0);
             order->Status = OrderStatus.Created;
             orders->Add(order); //what is this?
             cout<<"Create Order {"<<order.OrderId<<"}"<<endl;
