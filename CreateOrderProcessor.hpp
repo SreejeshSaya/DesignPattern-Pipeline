@@ -6,15 +6,15 @@
 class CreateOrderProcessor : public Processor<Order>
 {
     private:
-        std::vector<Order> *v = new std::vector<Order>;
+        std::vector<Order> *orders = new std::vector<Order>;
 
     protected:
         bool Process(Order* order)
         {
-            order->OrderId = orders.Count;
+            order->OrderId = orders.size();
             order->CreationTime = time(0);
             order->Status = OrderStatus.Created;
-            orders->Add(order); //what is this?
+            orders.push_back(order); //what is this?
             cout<<"Create Order {"<<order.OrderId<<"}"<<endl;
             return true;
         }
