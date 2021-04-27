@@ -1,3 +1,6 @@
+#ifndef ORDER_H
+#define ORDER_H
+
 #include <iostream>
 #include <ctime>
 
@@ -28,10 +31,7 @@ private:
 	unsigned int orderId;
 
 public:
-	Order(unsigned int uid, unsigned int pid, unsigned int q):
-	orderId(++count_), userId(uid), productId(pid), quantity(q), status(New), creationTime(time(0)) {
-		// ProductPrice, TotalPrice, DeliveryTime, Creation time, orderId
-	}
+	Order(unsigned int uid, unsigned int pid, unsigned int q);
 };
 
-int Order::count_ = 0;
+#endif

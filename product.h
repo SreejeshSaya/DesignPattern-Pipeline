@@ -1,4 +1,6 @@
 // NOT CLEAR
+#ifndef PRODUCT_H
+#define PRODUCT_H
 
 #include <iostream>
 using namespace std;
@@ -6,17 +8,16 @@ using namespace std;
 class Product {
 private:
 	static int count_;
+	string pName;
 	int id;
 	float price;
 
 public:
-	Product(float pr) {
-		id = count_++;
-		price = pr;
-	}
+	Product(string name, float pr);
+	void getInfo();
 
 	float getPrice() { return price; }
 	int getID() { return id; }
 };
 
-int Product::count_ = 0;
+#endif

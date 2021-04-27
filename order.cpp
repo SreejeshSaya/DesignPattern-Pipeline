@@ -1,0 +1,9 @@
+#include "order.h"
+#include <iostream>
+
+Order::Order(unsigned int uid, unsigned int pid, unsigned int q):
+orderId(++count_), userId(uid), productId(pid), quantity(q), status(New), creationTime(time(0)) {
+	// ProductPrice, TotalPrice, DeliveryTime, Creation time, orderId
+}
+
+int Order::count_ = 0;
