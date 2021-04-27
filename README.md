@@ -20,11 +20,11 @@
 
 [] PriceOrderProcessor.cs
 
-[] OrderStatus.cs
+[x] OrderStatus.cs
 
-[] Order.cs
+[x] Order.cs
 
-[] Product.cs
+[x] Product.cs
 
 [] Program.cs
 

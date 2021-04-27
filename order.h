@@ -4,6 +4,7 @@
 using namespace std;
 
 class Order {
+private:
 	// OrderStatus.cs
 	enum OrderStatus {
         New,
@@ -13,24 +14,24 @@ class Order {
         Delivered,
         Canceled
 	};
-	static int count;
+	static int count_;
 	int status;
-	int userId;
-	int productId;
-	int quantity;
-	float ProcuctPrice;
+	unsigned int userId;
+	unsigned int productId;
+	unsigned int quantity;
+	float ProductPrice;
 	float TotalPrice;
 	// Date DeliveryTime;
 	// Date CreationTime;
 	time_t creationTime;
 	time_t deliveryTime;
-	// unsigned long long int orderId;
-	
+	unsigned int orderId;
+
 public:
-	Order(int uid, int pid, int q):
-	orderId(++count), userId(uid), productId(pid), quantity(q), status(New), creationTime(time(0)) {
+	Order(unsigned int uid, unsigned int pid, unsigned int q):
+	orderId(++count_), userId(uid), productId(pid), quantity(q), status(New), creationTime(time(0)) {
 		// ProductPrice, TotalPrice, DeliveryTime, Creation time, orderId
 	}
 };
 
-int Order::count = 0;
+int Order::count_ = 0;
