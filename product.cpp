@@ -1,11 +1,11 @@
 #include "product.h"
+#include <iostream>
 
-Product::Product(string name, float pr):
-	pName(name), id(count_++), price(pr) {
-}
+Product::Product(std::string name, float pr):
+pName(name), id(count_++), price(pr) {}
 
 void Product::getInfo() {
-	cout << "ID: " << id << " Name: " << pName << " Price: " << price << endl;
+	std::cout << "ID: " << id << " Name: " << pName << " Price: " << price << std::endl;
 }
 
 int Product::count_ = 0;

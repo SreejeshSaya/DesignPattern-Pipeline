@@ -3,17 +3,16 @@
 #define PRODUCT_H
 
 #include <iostream>
-using namespace std;
 
 class Product {
 private:
 	static int count_;
-	string pName;
+	std::string pName;
 	int id;
 	float price;
 
 public:
-	Product(string name, float pr);
+	Product(std::string, float);
 	void getInfo();
 
 	float getPrice() { return price; }

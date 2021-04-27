@@ -1,10 +1,7 @@
 #ifndef ORDER_H
 #define ORDER_H
 
-#include <iostream>
 #include <ctime>
-
-using namespace std;
 
 class Order {
 private:
@@ -22,16 +19,14 @@ private:
 	unsigned int userId;
 	unsigned int productId;
 	unsigned int quantity;
-	float ProductPrice;
-	float TotalPrice;
-	// Date DeliveryTime;
-	// Date CreationTime;
+	float productPrice;
+	float totalPrice;
 	time_t creationTime;
 	time_t deliveryTime;
 	unsigned int orderId;
 
 public:
-	Order(unsigned int uid, unsigned int pid, unsigned int q);
+	Order(unsigned int, unsigned int, unsigned int);
 };
 
 #endif
