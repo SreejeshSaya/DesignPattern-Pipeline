@@ -15,6 +15,8 @@ private:
         Canceled
 	};
 	static int count_;
+
+	unsigned int orderId;
 	int status;
 	unsigned int userId;
 	unsigned int productId;
@@ -23,7 +25,6 @@ private:
 	float totalPrice;
 	time_t creationTime;
 	time_t deliveryTime;
-	unsigned int orderId;
 
 public:
 	Order(unsigned int, unsigned int, unsigned int);

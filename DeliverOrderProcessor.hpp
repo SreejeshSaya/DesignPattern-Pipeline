@@ -17,4 +17,4 @@ class DeliverOrderProcessor : public Processor<Order>
      }
 }
 
-
+#endif

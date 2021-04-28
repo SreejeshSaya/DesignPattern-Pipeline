@@ -1,4 +1,4 @@
-#include "product.h"
+#include "product.hpp"
 #include <iostream>
 
 Product::Product(std::string name, float pr):
@@ -9,3 +9,7 @@ void Product::getInfo() {
 }
 
 int Product::count_ = 0;
+Product Product::Apple("Apple", (float)120.00);
+Product Product::Banana("Banana", (float)80.00);
+Product Product::Orange("Orange", (float)50.00);
+Product Product::Pineapple("Pineapple", (float)65.50);

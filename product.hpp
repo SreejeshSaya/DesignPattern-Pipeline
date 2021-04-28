@@ -13,6 +13,11 @@ private:
 	vector<Product> products* = 
 
 public:
+	static Product Apple;
+	static Product Banana;
+	static Product Orange;
+	static Product Pineapple;
+
 	Product(std::string, float);
 	void getInfo();
 
