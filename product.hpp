@@ -1,16 +1,17 @@
 // NOT CLEAR
 #ifndef PRODUCT_H
 #define PRODUCT_H
+#include<vector>
 
-#include <iostream>
-
-class Product {
+class Product 
+{
 private:
 	static int count_;
 	std::string pName;
 	int id;
 	float price;
-	vector<Product> products* = 
+	static std::vector<Product> *products = new std::vector<Product>;
+	
 
 public:
 	static Product Apple;
@@ -21,7 +22,7 @@ public:
 	Product(std::string, float);
 	void getInfo();
 
-	float getPrice() { return price; }
+	static float getPrice() { return price; }
 	int getID() { return id; }
 };
 

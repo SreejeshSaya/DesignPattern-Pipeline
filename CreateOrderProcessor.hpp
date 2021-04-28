@@ -2,6 +2,7 @@
 #define CREATE_ORDER_H
 #include <ctime>
 #include "Processor.hpp"
+#include<vector>
 
 class CreateOrderProcessor : public Processor<Order>
 {

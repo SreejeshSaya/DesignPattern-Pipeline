@@ -2,7 +2,10 @@
 #include <iostream>
 
 Product::Product(std::string name, float pr):
-	pName(name), id(count_++), price(pr) {}
+	pName(name), id(count_++), price(pr) 
+{
+     products.push_back(this);
+}
 
 void Product::getInfo() {
 	std::cout << "ID: " << id << " Name: " << pName << " Price: " << price << std::endl;
