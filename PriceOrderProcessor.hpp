@@ -1,29 +1,25 @@
 #ifndef PRICE_ORDER_H
 #define PRICE_ORDER_H
+
+#include <iostream>
 #include "Processor.hpp"
+#include "order.hpp"
+#include "product.hpp"
 
-class PriceOrderProcessor : public Processor<Order>
-{   
+class PriceOrderProcessor : public Processor<Order> {   
     protected:
-        bool Process(Order* order)
-        {
-            float price = getPrice(order->productId);
+        bool Process(Order& order) {
+            float price = getPrice(order.productId);
+            order.productPrice = price;
+            order.totalPrice = price * order.quantity;
+            order.status = Order::Priced;
 
-            order->productPrice = price;
-            order->totalPrice = price * order->quantity;
-            order->status = OrderStatus.Priced;
-
-            cout << "Create Order {" << order->OrderId << "} Total Price {" << order->totalPrice <<"}" endl;
-
+            std::cout << "Create Order {" << order.orderId << "} Total Price {" << order.totalPrice << "}" << std::endl;
             return true;
         }
 
     private:
-
-    float getPrice(int product)
-    {
-        return Product.getPrice(product);
-    }
+    float getPrice(int product) { return Product::getPrice(product); }
 }
 
 
