@@ -5,17 +5,18 @@
 
 class Order {
 private:
-	// OrderStatus.cs
-	enum OrderStatus {
-        New,
-        Created,
-        Priced,
-        Paid,
-        Delivered,
-        Canceled
-	};
 	static int count_;
 
+public:
+	// OrderStatus.cs
+	static enum OrderStatus {
+		New,
+		Created,
+		Priced,
+		Paid,
+		Delivered,
+		Canceled
+	};
 	unsigned int orderId;
 	int status;
 	unsigned int userId;
@@ -26,7 +27,6 @@ private:
 	time_t creationTime;
 	time_t deliveryTime;
 
-public:
 	Order(unsigned int, unsigned int, unsigned int);
 };
 

@@ -4,7 +4,7 @@
 Product::Product(std::string name, float pr):
 	pName(name), id(count_++), price(pr) 
 {
-     products.push_back(this);
+     products_.push_back(*this);
 }
 
 void Product::getInfo() {
@@ -12,6 +12,8 @@ void Product::getInfo() {
 }
 
 int Product::count_ = 0;
+std::vector<Product> Product::products_;
+
 Product Product::Apple("Apple", (float)120.00);
 Product Product::Banana("Banana", (float)80.00);
 Product Product::Orange("Orange", (float)50.00);

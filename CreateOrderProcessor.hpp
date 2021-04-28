@@ -1,22 +1,20 @@
 #ifndef CREATE_ORDER_H
 #define CREATE_ORDER_H
+
 #include <ctime>
 #include "Processor.hpp"
-#include<vector>
+#include "order.hpp"
+#include <vector>
 
-class CreateOrderProcessor : public Processor<Order>
-{
+class CreateOrderProcessor : public Processor<Order>  {
 private:
-    std::vector<Order> *orders = new std::vector<Order>;
+    std::vector<Order>orders;
 
 protected:
-    bool Process(Order *order)
-    {
-        order->OrderId = this->orders.size();
-        order->CreationTime = time(0);
-        order->Status = OrderStatus.Created;
-        this->orders.push_back(order); //what is this?
-        std::cout << "Create Order {" << order->OrderId << "}" << std::endl;
+    bool Process(Order& order) {
+        order.status = Order::Created;
+        orders.push_back(order);
+        std::cout << "Create Order {" << order.orderId << "}" << std::endl;
         return true;
     }
 }
