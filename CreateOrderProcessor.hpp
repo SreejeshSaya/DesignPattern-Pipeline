@@ -4,6 +4,7 @@
 #include <ctime>
 #include "Processor.hpp"
 #include "order.hpp"
+#include <vector>
 
 class CreateOrderProcessor : public Processor<Order>  {
 private:

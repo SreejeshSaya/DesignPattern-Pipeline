@@ -20,12 +20,15 @@ public:
 	static Product Pineapple;
 
 	Product(std::string, float);
-	static void registerProduct(Product&);
 	void getInfo();
 
 	static float getPrice(int p) { return products_[p].price; }
 	int getID() { return id; }
+	static void listProducts() {
+		for (auto p : products_) {
+			p.getInfo();
+		}
+	}
 };
 
-void Product::registerProduct(Product&) {}
 #endif
