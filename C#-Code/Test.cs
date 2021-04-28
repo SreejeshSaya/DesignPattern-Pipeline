@@ -11,7 +11,7 @@ namespace Helios.Architecture.Pipeline.Processors {
             pipeline.RegisterOperation(new PriceOrderProcessor());
             pipeline.RegisterOperation(new PaymentOrderProcessor(User.Users.ToDictionary(user => user.Id, user => user.InitialBalance)));
             pipeline.RegisterOperation(new DeliverOrderProcessor());
-
+            
             var monitor = new Pipeline<Order>();
             monitor.RegisterOperation(pipeline);
             monitor.RegisterOperation(new Operation<Order>(order => {

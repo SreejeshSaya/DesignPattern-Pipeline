@@ -1,10 +1,12 @@
 #ifndef PAYMENT_ORDER_H
-#define PEYMENT_ORDER_H
+#define PAYMENT_ORDER_H
 #include<unordered_map>
 #include<iostream>
+#include "Processor.hpp"
+#include "order.hpp"
 using namespace std;
 
-class PaymentOrderProcessor : Processor<Order>
+class PaymentOrderProcessor : public Processor<Order>
 {
     private:
     unordered_map<int,float> balances;
@@ -52,10 +54,7 @@ class PaymentOrderProcessor : Processor<Order>
     }
     
 
-}
-
-
-
+};
 
 
 

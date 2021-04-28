@@ -16,7 +16,7 @@ protected:
         order->CreationTime = time(0);
         order->Status = OrderStatus.Created;
         this->orders.push_back(order); //what is this?
-        cout << "Create Order {" << order->OrderId << "}" << endl;
+        std::cout << "Create Order {" << order->OrderId << "}" << std::endl;
         return true;
     }
 }
