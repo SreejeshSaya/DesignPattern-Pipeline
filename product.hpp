@@ -3,6 +3,7 @@
 #define PRODUCT_H
 
 #include <iostream>
+#include <vector>
 
 class Product {
 private:
@@ -10,7 +11,7 @@ private:
 	std::string pName;
 	int id;
 	float price;
-	vector<Product> products* = 
+	static std::vector<Product> products_;
 
 public:
 	static Product Apple;
@@ -19,10 +20,12 @@ public:
 	static Product Pineapple;
 
 	Product(std::string, float);
+	static void registerProduct(Product&);
 	void getInfo();
 
-	float getPrice() { return price; }
+	static float getPrice(int p) { return products_[p].price; }
 	int getID() { return id; }
 };
 
+void Product::registerProduct(Product&) {}
 #endif

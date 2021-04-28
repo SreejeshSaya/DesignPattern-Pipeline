@@ -28,5 +28,5 @@
 
 [x] Operation.cs
 
-[] Pipeline.cs
+[x] Pipeline.cs
 
