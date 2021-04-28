@@ -4,8 +4,6 @@
 template <typename T>
 class IOperation {
 public:
-	IOperation<T> next;
-	IOperation<T> terminate;
 	virtual void invoke(T) = 0;
 };
 
