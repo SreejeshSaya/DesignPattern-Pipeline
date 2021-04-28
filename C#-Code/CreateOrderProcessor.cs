@@ -12,7 +12,7 @@ namespace Helios.Architecture.Pipeline.Processors
             order.OrderId = orders.Count;
             order.CreationTime = DateTime.UtcNow;
             order.Status = OrderStatus.Created;
-            orders.Add(order);
+            orders.Add(order);  //what is this?
             Console.WriteLine($"Create Order {order.OrderId}");
             return true;
         }

@@ -10,6 +10,7 @@ private:
 	std::string pName;
 	int id;
 	float price;
+	vector<Product> products* = 
 
 public:
 	Product(std::string, float);
