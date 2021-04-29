@@ -7,45 +7,42 @@
 #include <future>
 
 template<typename T>
-class Processor : public IOperation<T>
-{   
+class Processor : public IOperation<T> {   
     private:
-    static void Sleep()
-    {
+    static void Sleep() {
         std::this_thread::sleep_for(std::chrono::seconds(3));
     }
 
     Buffer<T> queue;
 
-    void Run() //to do
-    {
+    void Run() {  //to do
         //Console.WriteLine($ "Thread {GetType().Name} Started !");
-        std::cout<<"Thread {   } started!"<<endl; //incomplete
+        std::cout<<"Thread {   } started!"<< std::endl; //incomplete
 
-        while (true)
-        {
+        while(true) {
             T data = queue.pop();
             auto operation = Process(data) ? Next : Terminate;
-            operation.Invoke(data);
+            operation->invoke(data);
             Sleep(); 
         }
     }
 
     protected: 
-    virtual bool Process(T data) = 0;
+    virtual bool Process(T& data) = 0;
 
-    Processor()
-    {
+    Processor() {
         thread([]() { Run(); }).detach();
     }
 
     public:
-        IOperation<T> Terminate;
-        IOperation<T> Next;
-        void IOperation<T>.Invoke(T data)
-        {
+        IOperation<T> *Terminate;
+        IOperation<T> *Next;
+        void invoke(T& data) {
             queue.push(data);
         }
+        /*void IOperation<T>.invoke(T data) {
+            queue.push(data);
+        }*/
 
 };
 

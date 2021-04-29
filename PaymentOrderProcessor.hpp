@@ -32,15 +32,15 @@ class PaymentOrderProcessor : public Processor<Order>
         float expected = balance - order.totalPrice;
         if(expected >= 0)
         {
-            cout<<"Payment Order {"<<order.OrderId<<"} User {"<<order.UserId<<"} : {"<<order.TotalPrice<<"} Rs. | Balance {"<<balance<<"} -> {"<<expected<<"}";
+            cout<<"Payment Order {"<<order.orderId<<"} User {"<<order.userId<<"} : {"<<order.totalPrice<<"} Rs. | Balance {"<<balance<<"} -> {"<<expected<<"}";
             setBalance(order.userId, expected);
-            order.status = OrderStatus.Payed;
+            order.status = Order::Paid;
             return true;
         }
         else
         {
             cout<<"Insufficient Balance : User {"<<order.userId<<"} Balance {"<<balance<<"} USD | Order {"<<order.orderId<<"} : {"<<order.totalPrice<<"} USD";
-            order.status = OrderStatus.Canceled;
+            order.status = Order::Canceled;
             return false;
         }
     }
