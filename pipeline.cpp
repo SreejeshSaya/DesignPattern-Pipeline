@@ -11,10 +11,10 @@ Pipeline<T>::Pipeline() {
 
 template <typename T>
 void Pipeline<T>::registerOperation(IOperation<T>* operation) {
-	operation.Next = success;
-	operation.Terminate = fail;
+	operation->Next = success;
+	operation->Terminate = fail;
 	if (!operations.empty()) {
-		operations.back().Next = operation;
+		operations.back()->Next = operation;
 	}
 	operations.push_back(operation);
 }
