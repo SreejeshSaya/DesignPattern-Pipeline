@@ -6,7 +6,7 @@
 #include "order.hpp"
 #include <vector>
 
-class CreateOrderProcessor : public Processor<Order>  {
+class CreateOrderProcessor : public Processor<Order> {
 private:
     std::vector<Order>orders;
 
@@ -17,6 +17,6 @@ protected:
         std::cout << "Create Order {" << order.orderId << "}" << std::endl;
         return true;
     }
-}
+};
 
 #endif
