@@ -5,6 +5,18 @@
 
 [] Pipeline Stages fix (Payment Order)
 
+[] Better code for Payment Order balance management
+
+[] Interactive ui
+
+[] Better product list management
+
+[] Better user list management
+
+[] Print statement lock
+
+[] Circuit Breaker Implementation
+
 ## Code Conversion
 ## Pope Files
 [x] CreateOrderProcessor.cs
@@ -16,8 +28,6 @@
 [x] Processor.cs
 
 [x] PriceOrderProcessor.cs
-
-
 
 ## SJ Files
 [] Test.cs

@@ -53,7 +53,16 @@ int main() {
 	//monitor.registerOperation(report);
 
 	Order o1(1, Product::Pineapple.getID(), 1);
+	Order o2(2, Product::Apple.getID(), 1);
+	Order o3(1, Product::Pineapple.getID(), 1);
+	Order o4(2, Product::Orange.getID(), 1);
+	Order o5(1, Product::Pineapple.getID(), 1);
+	
 	pipeline.invoke(o1);
+	pipeline.invoke(o2);
+	pipeline.invoke(o3);
+	pipeline.invoke(o4);
+	pipeline.invoke(o5);
 	//monitor.invoke(o1);
 	std::this_thread::sleep_for(std::chrono::seconds(100));
 	return 1;
