@@ -5,7 +5,7 @@
 template class Pipeline<Order>;
 
 template <typename T>
-Pipeline<T>::Pipeline() {
+Pipeline<T>::Pipeline(){
 
 }
 

@@ -25,7 +25,9 @@ private:
         while(true) {
             T data = queue.pop();
             auto operation = Process(data) ? Next : Terminate;
-            operation->invoke(data);
+            if (operation != nullptr) {
+                    operation->invoke(data);
+            }
             Sleep(); 
         }
     }

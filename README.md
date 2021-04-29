@@ -17,6 +17,8 @@
 
 [] Circuit Breaker Implementation
 
+[] Thread joining
+
 ## Code Conversion
 ## Pope Files
 [x] CreateOrderProcessor.cs

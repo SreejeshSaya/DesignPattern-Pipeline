@@ -32,14 +32,14 @@ int main() {
 	// Test.cs
 	Pipeline<Order> pipeline;
 
-	CreateOrderProcessor *cop = new CreateOrderProcessor();
-	PriceOrderProcessor *prp = new PriceOrderProcessor();
-	PaymentOrderProcessor *pap = new PaymentOrderProcessor(User::users_);
+	CreateOrderProcessor* cop = new CreateOrderProcessor();
+	PriceOrderProcessor* prp = new PriceOrderProcessor();
+	PaymentOrderProcessor* pap = new PaymentOrderProcessor(User::users_);
 	for (auto user : User::users_) {
 		std::cout << user.id << " " << user.initial_balance << std::endl;
 	}
-	
-	DeliverOrderProcessor *dop = new DeliverOrderProcessor();
+
+	DeliverOrderProcessor* dop = new DeliverOrderProcessor();
 	//IOperation<Order> *dop = new DeliverOrderProcessor();
 
 	pipeline.registerOperation(cop);
@@ -57,7 +57,7 @@ int main() {
 	Order o3(1, Product::Pineapple.getID(), 1);
 	Order o4(2, Product::Orange.getID(), 1);
 	Order o5(1, Product::Pineapple.getID(), 1);
-	
+
 	pipeline.invoke(o1);
 	pipeline.invoke(o2);
 	pipeline.invoke(o3);

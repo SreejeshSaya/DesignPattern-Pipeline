@@ -10,15 +10,14 @@ public:
 
     User(float balance) {
         id = users_.size();
-        users_.push_back(*this);
         initial_balance = balance;
+        users_.push_back(*this);
     }
 
     static User Alice;
     static User Bob;
     static User Charlie;
     static std::vector<User> users_;
-   
 };
 
 
