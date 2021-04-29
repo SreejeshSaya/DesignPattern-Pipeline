@@ -9,13 +9,11 @@
 #include "PriceOrderProcessor.hpp"
 #include "PaymentOrderProcessor.hpp"
 #include "DeliverOrderProcessor.hpp"
-
-
-
+//#include <string>
 
 bool reportOrder(Order& order) {
-	string report = order.status == Order::Delivered ? "Success" : "Failed";
-	cout << "$[IMPORTANT] Order " << order.orderId << " Finished Processing : " << report << std::endl;
+	std::string report = order.status == Order::Delivered ? "Success" : "Failed";
+	std::cout << "$[IMPORTANT] Order " << order.orderId << " Finished Processing : " << report << std::endl;
 	return true;
 }
 
@@ -55,3 +53,31 @@ int main() {
 	//monitor.invoke(o1);
 	return 1;
 }
+
+//#include <iostream>
+//#include <functional>
+//
+//using namespace std::placeholders;
+//
+//class aClass {
+//public:
+//    void aTest(int a, int b) {
+//        printf("%d + %d = %d", a, b, a + b);
+//    }
+//};
+//
+//class bClass {
+//public:
+//    void function1(std::function<void(int, int)> fun) {
+//        fun(1, 1);
+//    }
+//};
+//
+//int main(int argc, const char* argv[]) {
+//    aClass a;
+//    bClass b;
+//    auto fp = std::bind(&aClass::aTest, a, _1, _2);
+//    b.function1(fp);
+//
+//    return 0;
+//}
