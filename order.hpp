@@ -9,7 +9,7 @@ private:
 
 public:
 	// OrderStatus.cs
-	static enum OrderStatus {
+	enum OrderStatus {
 		New,
 		Created,
 		Priced,
