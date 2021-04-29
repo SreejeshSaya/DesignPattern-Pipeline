@@ -5,7 +5,7 @@ template <typename T> Pipeline<T>::Pipeline():
 	success(new Operation(Success)), fail(new Operation(Fail))
 	{}
 
-template <typename T> void Pipeline<T>::RegisterOperation(IOperation<T> operation) {
+template <typename T> void Pipeline<T>::registerOperation(IOperation<T>* operation) {
 	operation.Next = success;
 	operation.Terminate = fail;
 	if (!operations.empty()) {
@@ -14,7 +14,7 @@ template <typename T> void Pipeline<T>::RegisterOperation(IOperation<T> operatio
 	operations.push_back(operation);
 }
 
-template <typename T> void Pipeline<T>::invoke(T data) {
+template <typename T> void Pipeline<T>::invoke(T& data) {
 	auto operation = !operations.empty() ? operations.front() : fail;
 	operation.invoke(data);
 }

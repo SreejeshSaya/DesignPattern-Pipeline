@@ -4,7 +4,7 @@
 template <typename T>
 class IOperation {
 public:
-	virtual void invoke(T) = 0;
+	virtual void invoke(T&) = 0;
 };
 
 #endif

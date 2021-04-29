@@ -10,7 +10,7 @@ private:
 	IOperation<T> Next;
 	IOperation<T> Terminate;
 public:
-	void invoke(T data) {
+	void invoke(T& data) {
 		auto operation = *(action)(data) ? Next : Terminate;
 		if(operation != nullptr) 
 			operation.invoke(data);
