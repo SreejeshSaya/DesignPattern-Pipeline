@@ -21,8 +21,8 @@ void Pipeline<T>::registerOperation(IOperation<T>* operation) {
 
 template <typename T>
 void Pipeline<T>::invoke(T& data) {
-	IOperation<Order> op = (!operations.empty()) ? operations.front() : fail;
-	op.invoke(data);
+	IOperation<Order> *op = (!operations.empty()) ? operations.front() : fail;
+	op->invoke(data);
 }
 
 template <typename T>
@@ -39,6 +39,6 @@ template <typename T> bool Pipeline<T>::Fail(T& data) {
 template <typename T>
 void Pipeline<T>::Continue(T& data) {
 	if (Next != nullptr) {
-		Next.invoke(data);
+		Next->invoke(data);
 	}
 }

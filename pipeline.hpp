@@ -12,7 +12,7 @@ class Pipeline : public IOperation<T> {
 private:
 	IOperation<T> *success;
 	IOperation<T> *fail;
-	std::vector<T> operations;
+	std::vector<IOperation<T>*> operations;
 	IOperation<T> *Next;
 	IOperation<T> *Terminate;
 public:
