@@ -1,6 +1,9 @@
 # DesignPattern-Pipeline
 
 ## Integration and Testing
+[] User balance bug
+
+[] Pipeline Stages fix (Payment Order)
 
 ## Code Conversion
 ## Pope Files
