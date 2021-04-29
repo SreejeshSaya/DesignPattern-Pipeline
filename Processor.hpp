@@ -31,7 +31,10 @@ class Processor : public IOperation<T> {
     virtual bool Process(T& data) = 0;
 
     Processor() {
-        thread([]() { Run(); }).detach();
+        //thread t1([]() { Run(); }).detach();
+        //std::thread t5(&foo::bar, &f); // t5 runs foo::bar() on object f
+        std::thread t(&Processor::Run, this);
+        t.detach();
     }
 
     public:
