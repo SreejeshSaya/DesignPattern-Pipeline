@@ -8,7 +8,10 @@
 
 template<typename T>
 class Processor : public IOperation<T> {   
-    private:
+private:
+    using IOperation<T>::Next;
+    using IOperation<T>::Terminate;
+
     static void Sleep() {
         std::this_thread::sleep_for(std::chrono::seconds(3));
     }
@@ -17,7 +20,7 @@ class Processor : public IOperation<T> {
 
     void Run() {  //to do
         //Console.WriteLine($ "Thread {GetType().Name} Started !");
-        std::cout<<"Thread {   } started!"<< std::endl; //incomplete
+        std::cout<<"Thread started!"<< std::endl; //incomplete
 
         while(true) {
             T data = queue.pop();
@@ -30,23 +33,17 @@ class Processor : public IOperation<T> {
     protected: 
     virtual bool Process(T& data) = 0;
 
+public:
     Processor() {
         //thread t1([]() { Run(); }).detach();
         //std::thread t5(&foo::bar, &f); // t5 runs foo::bar() on object f
-        std::thread t(&Processor::Run, this);
+        std::thread t(&Processor::Run, this);   
         t.detach();
     }
 
-    public:
-        IOperation<T> *Terminate;
-        IOperation<T> *Next;
-        void invoke(T& data) {
-            queue.push(data);
-        }
-        /*void IOperation<T>.invoke(T data) {
-            queue.push(data);
-        }*/
-
+    void invoke(T& data) {
+        queue.push(data);
+    }
 };
 
 #endif
