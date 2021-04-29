@@ -7,11 +7,9 @@
 #include <condition_variable>
 
 template <typename T>
-class Buffer
-{
+class Buffer {
 public:
-    T pop()
-    {
+    T pop() {
         std::unique_lock<std::mutex> mlock(mutex_);
         while (queue_.empty())
         {
@@ -23,18 +21,15 @@ public:
     }
 
 
-    void push(const T &item)
-    {
+    void push(const T &item) {
         std::unique_lock<std::mutex> mlock(mutex_);
         queue_.push(item);
         mlock.unlock();
         cond_.notify_one();
     }
-
     
-
 private:
-    std:queue<T> queue_;
+    std::queue<T> queue_;
     std::mutex mutex_;
     std::condition_variable cond_;
 };

@@ -4,56 +4,49 @@
 #include<iostream>
 #include "Processor.hpp"
 #include "order.hpp"
+#include "user.hpp"
+
 using namespace std;
 
 class PaymentOrderProcessor : public Processor<Order>
 {
     private:
     unordered_map<int,float> balances;
-    float getBalance(int user)
-    {
-        if(balances.find(user) == balances.end())
-        {
+    float getBalance(int user) {
+        if(balances.find(user) == balances.end()) {
             return 0;
 
         }
         return balances[user];
     }
-    void setBalance(int user, float balance)
-    {
+    void setBalance(int user, float balance) {
         balances[user] = balance;
     }
 
     protected:
 
-    bool Process(Order& order)
-    {
+    bool Process(Order& order) {
         float balance = getBalance(order.userId);
         float expected = balance - order.totalPrice;
-        if(expected >= 0)
-        {
+        if(expected >= 0) {
             cout<<"Payment Order {"<<order.orderId<<"} User {"<<order.userId<<"} : {"<<order.totalPrice<<"} Rs. | Balance {"<<balance<<"} -> {"<<expected<<"}";
             setBalance(order.userId, expected);
             order.status = Order::Paid;
             return true;
         }
-        else
-        {
+        else {
             cout<<"Insufficient Balance : User {"<<order.userId<<"} Balance {"<<balance<<"} USD | Order {"<<order.orderId<<"} : {"<<order.totalPrice<<"} USD";
             order.status = Order::Canceled;
             return false;
         }
     }
 
-
-
     public:
-    PaymentOrderProcessor(unordered_map<int,float> balances)
-    {
-           this->balances = balances
-    }
-    
-
+    PaymentOrderProcessor(std::vector<User> &users) {
+        for (auto user : users) {
+            balances[user.id] = user.initial_balance;
+        }
+    } 
 };
 
 

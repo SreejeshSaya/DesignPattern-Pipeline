@@ -6,14 +6,18 @@
 template <typename T> 
 class Operation : public IOperation<T> {
 private:
-	bool* action(T);
-	IOperation<T> Next;
-	IOperation<T> Terminate;
+	bool (*action)(T&);
+	IOperation<T> *Next;
+	IOperation<T> *Terminate;
 public:
+	Operation(bool* a(T)) {
+		action = a;
+	}
+
 	void invoke(T& data) {
 		auto operation = *(action)(data) ? Next : Terminate;
 		if(operation != nullptr) 
-			operation.invoke(data);
+			operation->invoke(data);
 	}
 };
 
