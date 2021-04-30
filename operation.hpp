@@ -3,16 +3,18 @@
 
 #include "ioperation.hpp"
 #include <iostream>
+#include <functional>
 
 template <typename T> 
 class Operation : public IOperation<T> {
 private:
-	//bool (*action)(T&);
-	std::function<bool()> action;
+	bool (*action)(T&);
+	//std::function<bool()> action;
+	//bool (IOperation::*)(T&) action;
 	IOperation<T> *Next;
 	IOperation<T> *Terminate;
 public:
-	Operation(bool (*a)(T&)) {
+	Operation(std::function<bool(T&)> a) {
 		action = a;
 	}
 
