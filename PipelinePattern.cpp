@@ -17,7 +17,7 @@ bool reportOrder(Order& order) {
 }
 
 
-void interactiveRun(Pipeline<Order> &pipeline) {
+void interactiveRun(Pipeline<Order>& pipeline) {
 	std::string username;
 	float balance;
 	std::cout << "Enter your username" << "\n";
@@ -39,7 +39,7 @@ void interactiveRun(Pipeline<Order> &pipeline) {
 		std::cin >> id >> quantity;
 		orders.push_back(Order(user_id, id, quantity));
 	}
-	
+
 	CreateOrderProcessor* cop = new CreateOrderProcessor();
 	PriceOrderProcessor* prp = new PriceOrderProcessor();
 	PaymentOrderProcessor* pap = new PaymentOrderProcessor();
@@ -50,14 +50,14 @@ void interactiveRun(Pipeline<Order> &pipeline) {
 	pipeline.registerOperation(prp);
 	pipeline.registerOperation(pap);
 	pipeline.registerOperation(dop);
-	
-	for (int i = 0; i<orders.size(); i++) {
+
+	for (int i = 0; i < orders.size(); i++) {
 		pipeline.invoke(orders[i]);
-	std::this_thread::sleep_for(std::chrono::seconds(1000));
+		std::this_thread::sleep_for(std::chrono::seconds(1000));
+	}
 }
 
-int main() 
-{   
+int main() {   
 	Pipeline<Order> pipeline;
 
 	interactiveRun(pipeline);

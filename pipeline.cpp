@@ -21,7 +21,7 @@ void Pipeline<T>::registerOperation(IOperation<T>* operation) {
 
 template <typename T>
 void Pipeline<T>::invoke(T& data) {
-	std::cout << "IN PIPELINE::INVOKE\n";
+	//std::cout << "IN PIPELINE::INVOKE\n";
 	IOperation<Order> *op = (!operations.empty()) ? operations.front() : fail;
 	op->invoke(data);
 }
