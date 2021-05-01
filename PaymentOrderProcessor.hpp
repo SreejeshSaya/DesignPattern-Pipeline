@@ -42,8 +42,9 @@ class PaymentOrderProcessor : public Processor<Order>
     }
 
     public:
-    PaymentOrderProcessor(std::vector<User> &users) {
-        for (auto user : users) {
+    PaymentOrderProcessor() 
+    {
+        for (auto user : User::users_) {
             balances[user.id] = user.initial_balance;
         }
     } 

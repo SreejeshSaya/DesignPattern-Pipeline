@@ -20,7 +20,7 @@ private:
 
     void Run() {  //to do
         //Console.WriteLine($ "Thread {GetType().Name} Started !");
-        std::cout<<"Thread started!"<< std::endl; //incomplete
+        //std::cout<<"Thread started!"<< std::endl; //incomplete
 
         while(true) {
             T data = queue.pop();

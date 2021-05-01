@@ -3,7 +3,7 @@
 #include "product.hpp"
 #include "order.hpp"
 #include "pipeline.hpp"
-//#include "user.hpp"
+#include "user.hpp"
 #include "operation.hpp"
 #include "CreateOrderProcessor.hpp"
 #include "PriceOrderProcessor.hpp"
@@ -40,13 +40,29 @@ void interactiveRun(Pipeline<Order> &pipeline) {
 		std::cin >> id >> quantity;
 		orders.push_back(Order(user_id, id, quantity));
 	}
+	
+
+	
 	for (int i = 0; i<orders.size(); i++) {
 		pipeline.invoke(orders[i]);
 	}
 	std::this_thread::sleep_for(std::chrono::seconds(100));
 }
 
-int main() {
+int main() 
+{   
+	Pipeline<Order> pipeline;
+	CreateOrderProcessor* cop = new CreateOrderProcessor();
+	PriceOrderProcessor* prp = new PriceOrderProcessor();
+	PaymentOrderProcessor* pap = new PaymentOrderProcessor();
+	DeliverOrderProcessor* dop = new DeliverOrderProcessor();
+	//IOperation<Order> *dop = new DeliverOrderProcessor();
+
+	pipeline.registerOperation(cop);
+	pipeline.registerOperation(prp);
+	pipeline.registerOperation(pap);
+	pipeline.registerOperation(dop);
+	interactiveRun(pipeline);
 	//std::cout << "Hello World\n";
 	///*Product::Apple.getInfo();
 	//Product::Banana.getInfo();
@@ -59,22 +75,20 @@ int main() {
 	//
 
 	// Test.cs
-	Pipeline<Order> pipeline;
+	//Pipeline<Order> pipeline;
 
-	CreateOrderProcessor* cop = new CreateOrderProcessor();
-	PriceOrderProcessor* prp = new PriceOrderProcessor();
-	PaymentOrderProcessor* pap = new PaymentOrderProcessor(User::users_);
-	for (auto user : User::users_) {
-		std::cout << user.id << " " << user.initial_balance << std::endl;
-	}
+	//CreateOrderProcessor* cop = new CreateOrderProcessor();
+	//PriceOrderProcessor* prp = new PriceOrderProcessor();
+	//PaymentOrderProcessor* pap = new PaymentOrderProcessor(User::users_);
+	//
 
-	DeliverOrderProcessor* dop = new DeliverOrderProcessor();
-	//IOperation<Order> *dop = new DeliverOrderProcessor();
+	//DeliverOrderProcessor* dop = new DeliverOrderProcessor();
+	////IOperation<Order> *dop = new DeliverOrderProcessor();
 
-	pipeline.registerOperation(cop);
-	pipeline.registerOperation(prp);
-	pipeline.registerOperation(pap);
-	pipeline.registerOperation(dop);
+	//pipeline.registerOperation(cop);
+	//pipeline.registerOperation(prp);
+	//pipeline.registerOperation(pap);
+	//pipeline.registerOperation(dop);''
 
 	//Pipeline<Order> monitor;
 	//monitor.registerOperation(&pipeline);
@@ -95,6 +109,6 @@ int main() {
 	////monitor.invoke(o1);
 	//std::this_thread::sleep_for(std::chrono::seconds(100));
 
-	interactiveRun(pipeline);
+	
 	return 1;
 }
