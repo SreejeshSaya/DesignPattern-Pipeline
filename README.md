@@ -1,58 +1,24 @@
 # DesignPattern-Pipeline
 
 ## Integration and Testing
-[] User balance bug
-
-[] Pipeline Stages fix (Payment Order)
-
-[] Better code for Payment Order balance management
-
-[] Interactive ui
-
-[] Better product list management
-
-[] Better user list management
+[x] Interactive ui
 
 [] Print statement lock
 
 [] Circuit Breaker Implementation
 
-[] Thread joining
-
 [x] Date-Time formatting in stages
 
-[] Thread-safe updating balance
+[] Exit program by terminating threads
 
-## Code Conversion
-## Pope Files
-[x] CreateOrderProcessor.cs
+[] orderReportProcessor
 
-[x] DeliverOrderProcessor.cs
+[] Plugin orderstatus
 
-[x] PaymentOrderProcessor.cs
+[] user class - add username
 
-[x] Processor.cs
+[] Random sleep for threads
 
-[x] PriceOrderProcessor.cs
+[] make users_ private
 
-## SJ Files
-[] Test.cs
-
-[x] OrderStatus.cs
-
-[x] Order.cs
-
-[x] Product.cs
-
-[o] Program.cs
-
-[x] IOperation.cs
-
-[x] Operation.cs
-
-[x] Pipeline.cs
-
-things to be fixed:
-users_ private
-products_ private
-user dictionary should contain username
+[] make products_ private
