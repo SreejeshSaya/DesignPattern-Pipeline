@@ -9,6 +9,7 @@
 template<typename T>
 class Processor : public IOperation<T> {   
 private:
+    std::thread t_;
     using IOperation<T>::Next;
     using IOperation<T>::Terminate;
 
@@ -36,16 +37,11 @@ private:
     virtual bool Process(T& data) = 0;
 
 public:
-    Processor() {
-        //thread t1([]() { Run(); }).detach();
-        //std::thread t5(&foo::bar, &f); // t5 runs foo::bar() on object f
-        std::thread t(&Processor::Run, this);   
-        t.detach();
-    }
+    Processor():
+        t_(&Processor::Run, this)
+    {}
 
-    void invoke(T& data) {
-        queue.push(data);
-    }
+    void invoke(T& data) { queue.push(data); }
 };
 
 #endif
