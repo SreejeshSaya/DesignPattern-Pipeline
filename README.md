@@ -19,7 +19,7 @@
 
 [] Thread joining
 
-[] Date-Time formatting in stages
+[x] Date-Time formatting in stages
 
 ## Code Conversion
 ## Pope Files

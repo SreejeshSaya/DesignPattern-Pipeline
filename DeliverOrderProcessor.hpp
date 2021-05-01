@@ -12,9 +12,12 @@
 class DeliverOrderProcessor : public Processor<Order> {
 protected:
     bool Process(Order& order) {
-        order.deliveryTime = time(0);
+        order.deliveryTime = std::time(0);
         order.status = Order::Delivered;
-        std::cout << "Order {" << order.orderId << "} Delivered : {" << order.deliveryTime << "}" << std::endl;
+        char deliTime[26];
+        ctime_s(deliTime, 26, &order.deliveryTime);
+        deliTime[24] = '\0';
+        std::cout << "Order {" << order.orderId << "} DELIVERED : { " << deliTime << " }" << std::endl;
         return true;
     }
 };

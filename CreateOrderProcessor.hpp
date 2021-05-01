@@ -12,9 +12,13 @@ private:
 
 protected:
     bool Process(Order& order) {
+        order.creationTime = std::time(0);
         order.status = Order::Created;
+        char createT[26];
+        ctime_s(createT, 26, &order.creationTime);
+        createT[24] = '\0';
+        std::cout << "Order {" << order.orderId << "} " << "CREATED : { " << createT << " }" << std::endl;
         orders.push_back(order);
-        std::cout << "Create Order {" << order.orderId << "}" << std::endl;
         return true;
     }
 };
