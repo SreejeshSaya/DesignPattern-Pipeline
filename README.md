@@ -21,6 +21,8 @@
 
 [x] Date-Time formatting in stages
 
+[] Thread-safe updating balance
+
 ## Code Conversion
 ## Pope Files
 [x] CreateOrderProcessor.cs
