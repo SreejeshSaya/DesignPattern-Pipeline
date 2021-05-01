@@ -44,7 +44,8 @@ void interactiveRun(Pipeline<Order>& pipeline) {
 		pipeline.invoke(orders[i]);
 	}
 
-	std::this_thread::sleep_for(std::chrono::seconds(100));
+	std::this_thread::sleep_for(std::chrono::seconds(orders.size()*2));
+	pipeline.terminate();
 }
 
 int main() {   

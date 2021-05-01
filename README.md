@@ -9,7 +9,7 @@
 
 [x] Date-Time formatting in stages
 
-[] Exit program by terminating threads
+[x] Exit program by terminating threads
 
 [] orderReportProcessor
 

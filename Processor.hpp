@@ -12,6 +12,7 @@ private:
     std::thread t_;
     using IOperation<T>::Next;
     using IOperation<T>::Terminate;
+    std::atomic_bool stopLoop;
 
     static void Sleep() {
         std::this_thread::sleep_for(std::chrono::seconds(3));
@@ -19,12 +20,11 @@ private:
 
     Buffer<T> queue;
 
-    void Run() {  //to do
-        //Console.WriteLine($ "Thread {GetType().Name} Started !");
-        //std::cout<<"Thread started!"<< std::endl; //incomplete
-
-        while(true) {
+    void Run() {
+        while(!stopLoop) {
             T data = queue.pop();
+            if (stopLoop)
+                break;
             auto operation = Process(data) ? Next : Terminate;
             if (operation != nullptr) {
                     operation->invoke(data);
@@ -38,10 +38,16 @@ private:
 
 public:
     Processor():
-        t_(&Processor::Run, this)
+        t_(&Processor::Run, this), stopLoop(false)
     {}
 
     void invoke(T& data) { queue.push(data); }
+    void terminate() {
+        stopLoop = true;
+        Order tmp(0, 0, 0);
+        invoke(tmp);
+        t_.join();
+    }
 };
 
 #endif

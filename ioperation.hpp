@@ -7,6 +7,7 @@ public:
 	IOperation<T>* Next;
 	IOperation<T>* Terminate;
 	virtual void invoke(T&) = 0;
+	virtual void terminate() = 0;
 };
 
 #endif

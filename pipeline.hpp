@@ -13,8 +13,9 @@ private:
 	IOperation<T> *success;
 	IOperation<T> *fail;
 	std::vector<IOperation<T>*> operations;
-	IOperation<T> *Next;
-	IOperation<T> *Terminate;
+	using IOperation<T>::Next;
+	using IOperation<T>::Terminate;
+
 public:
 	Pipeline();
 	void registerOperation(IOperation<T>*);
@@ -22,6 +23,7 @@ public:
 	bool Success(T&);
 	bool Fail(T&);
 	void Continue(T&);
+	void terminate();
 };
 
 #endif

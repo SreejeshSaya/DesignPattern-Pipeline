@@ -43,3 +43,10 @@ void Pipeline<T>::Continue(T& data) {
 		Next->invoke(data);
 	}
 }
+
+template <typename T>
+void Pipeline<T>::terminate() {
+	for (IOperation<T> *operation : operations) {
+		operation->terminate();
+	}
+}
