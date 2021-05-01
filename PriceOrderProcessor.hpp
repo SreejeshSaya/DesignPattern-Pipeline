@@ -14,7 +14,7 @@ protected:
         order.totalPrice = price * order.quantity;
         order.status = Order::Priced;
 
-        std::cout << "Create Order {" << order.orderId << "} Total Price {" << order.totalPrice << "}" << std::endl;
+        std::cout << "Order Price {" << order.orderId << "} Total Price {" << order.totalPrice << "}" << std::endl;
         return true;
     }
 

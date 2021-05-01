@@ -41,17 +41,6 @@ void interactiveRun(Pipeline<Order> &pipeline) {
 		orders.push_back(Order(user_id, id, quantity));
 	}
 	
-
-	
-	for (int i = 0; i<orders.size(); i++) {
-		pipeline.invoke(orders[i]);
-	}
-	std::this_thread::sleep_for(std::chrono::seconds(100));
-}
-
-int main() 
-{   
-	Pipeline<Order> pipeline;
 	CreateOrderProcessor* cop = new CreateOrderProcessor();
 	PriceOrderProcessor* prp = new PriceOrderProcessor();
 	PaymentOrderProcessor* pap = new PaymentOrderProcessor();
@@ -62,6 +51,17 @@ int main()
 	pipeline.registerOperation(prp);
 	pipeline.registerOperation(pap);
 	pipeline.registerOperation(dop);
+	
+	for (int i = 0; i<orders.size(); i++) {
+		pipeline.invoke(orders[i]);
+	}
+	std::this_thread::sleep_for(std::chrono::seconds(100));
+}
+
+int main() 
+{   
+	Pipeline<Order> pipeline;
+
 	interactiveRun(pipeline);
 	//std::cout << "Hello World\n";
 	///*Product::Apple.getInfo();
