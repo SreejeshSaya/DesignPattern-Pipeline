@@ -49,3 +49,8 @@
 [x] Operation.cs
 
 [x] Pipeline.cs
+
+things to be fixed:
+users_ private
+products_ private
+user dictionary should contain username
