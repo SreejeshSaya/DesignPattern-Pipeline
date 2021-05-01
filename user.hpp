@@ -7,25 +7,17 @@
 class User {
 public:
     int id;
-    float initial_balance;
-   
+    float balance;
 
-    User(float balance) {
-        
-
-        id = users_.size();
-        initial_balance = balance;
-        users_.push_back(*this);
-
-    }
+    User(float balance);
 
     static User Alice;
     static User Bob;
     static User Charlie;
     static std::vector<User> users_;
 
-   
-   
+    static float getBalance(unsigned int);
+    static void updateBalance(unsigned int, float);
 };
 
 
