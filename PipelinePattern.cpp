@@ -9,6 +9,7 @@
 #include "PriceOrderProcessor.hpp"
 #include "PaymentOrderProcessor.hpp"
 #include "DeliverOrderProcessor.hpp"
+#include "ReportOrderProcessor.hpp"
 
 bool reportOrder(Order& order) {
 	std::string report = order.status == Order::Delivered ? "Success" : "Failed";
@@ -24,8 +25,13 @@ void interactiveRun(Pipeline<Order>& pipeline) {
 	std::cin >> username;
 	std::cout << "Enter your account balance" << "\n";
 	std::cin >> balance;
-	User dummy(balance);
+	User dummy(username, balance);
+	int user_id = User::users_.size() - 1;
+
 	int n;
+	int id;
+	int quantity;
+
 	std::cout << "The following products are available for you to place an order:" << "\n";
 	Product::listProducts();
 	std::cout << "Enter the number of orders you want to place" << "\n";
@@ -33,15 +39,12 @@ void interactiveRun(Pipeline<Order>& pipeline) {
 	std::vector<Order> orders;
 	for (int i = 1; i <= n; i++) {
 		std::cout << "Enter order number " << i << " in the format  <product_id  quantity>" << "\n";
-		int id;
-		int quantity;
-		int user_id = User::users_.back().id;
 		std::cin >> id >> quantity;
 		orders.push_back(Order(user_id, id, quantity));
 	}
 
-	for (int i = 0; i < orders.size(); i++) {
-		pipeline.invoke(orders[i]);
+	for(Order o : orders) {
+		pipeline.invoke(o);
 	}
 
 	std::this_thread::sleep_for(std::chrono::seconds(orders.size()*2));
@@ -54,11 +57,13 @@ int main() {
 	PriceOrderProcessor* prp = new PriceOrderProcessor();
 	PaymentOrderProcessor* pap = new PaymentOrderProcessor();
 	DeliverOrderProcessor* dop = new DeliverOrderProcessor();
+	ReportOrderProcessor* rop = new ReportOrderProcessor();
 
 	pipeline.registerOperation(cop);
 	pipeline.registerOperation(prp);
 	pipeline.registerOperation(pap);
 	pipeline.registerOperation(dop);
+	pipeline.registerOperation(rop);
 
 	interactiveRun(pipeline);
 	
