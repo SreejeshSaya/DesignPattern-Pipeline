@@ -28,6 +28,7 @@ public:
 	time_t deliveryTime;
 
 	Order(unsigned int, unsigned int, unsigned int);
+	void displayReport();
 };
 
 #endif
