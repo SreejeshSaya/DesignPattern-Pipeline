@@ -9,7 +9,7 @@ class Product {
 private:
 	static int count_;
 	std::string pName;
-	int id;
+	unsigned int id;
 	float price;
 	static std::vector<Product> products_;
 
@@ -24,11 +24,8 @@ public:
 
 	static float getPrice(int p) { return products_[p].price; }
 	int getID() { return id; }
-	static void listProducts() {
-		for (auto p : products_) {
-			p.getInfo();
-		}
-	}
+	static void listProducts();
+	static Product* getProduct(unsigned int);
 };
 
 #endif

@@ -11,6 +11,17 @@ void Product::getInfo() {
 	std::cout << "ID: " << id << " Name: " << pName << " Price: " << price << std::endl;
 }
 
+void Product::listProducts() {
+	for (auto p : products_)
+		p.getInfo();
+}
+
+Product* Product::getProduct(unsigned int pid) {
+	if (pid >= products_.size())
+		return nullptr;
+	return &products_[pid];
+}
+
 int Product::count_ = 0;
 std::vector<Product> Product::products_;
 
