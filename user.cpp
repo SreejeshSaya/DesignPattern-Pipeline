@@ -1,14 +1,22 @@
 #include <vector>
 #include "user.hpp"
+#include <iostream>
 
 std::vector<User> User::users_;
-User User::Alice((float)1000.00);
-User User::Bob((float)1000.00);
-User User::Charlie((float)1000.00);
+User User::Alice("Alice", (float)1000.00);
+User User::Bob("Bob", (float)1000.00);
+User User::Charlie("Charlie", (float)1000.00);
 
-User::User(float b):
-    id(users_.size()), balance(b) {
+User::User(std::string name, float b):
+    id(users_.size()), username(name), balance(b) {
     users_.push_back(*this); 
+}
+
+void User::displayInfo() {
+    std::cout << "Name: " << username << std::endl;
+    std::cout << "User Id: " << id << std::endl;
+    std::cout << "Balance: " << balance << std::endl;
+    return;
 }
 
 
@@ -21,4 +29,10 @@ float User::getBalance(unsigned int uid) {
 void User::updateBalance(unsigned int uid, float bal) {
     if (uid < users_.size())
         users_[uid].balance = bal;
+}
+
+User* User::getUser(unsigned int uid) {
+    if (uid >= users_.size())
+        return nullptr;
+    return &users_[uid];
 }

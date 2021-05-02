@@ -5,11 +5,14 @@
 #include<unordered_map>
 
 class User {
-public:
-    int id;
+private:
     float balance;
+    unsigned int id;
+    std::string username;
 
-    User(float balance);
+public:
+    User(std::string, float);
+    void displayInfo();
 
     static User Alice;
     static User Bob;
@@ -18,6 +21,7 @@ public:
 
     static float getBalance(unsigned int);
     static void updateBalance(unsigned int, float);
+    static User* getUser(unsigned int);
 };
 
 
