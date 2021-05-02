@@ -8,7 +8,7 @@ Product::Product(std::string name, float pr):
 }
 
 void Product::getInfo() {
-	std::cout << "ID: " << id << " Name: " << pName << " Price: " << price << std::endl;
+	std::cout << "ID: " << id << "\tName: " << pName << "\tPrice: " << price << std::endl;
 }
 
 void Product::listProducts() {

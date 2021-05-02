@@ -26,7 +26,6 @@ void interactiveRun(Pipeline<Order>& pipeline) {
 	std::cout << "Enter your account balance" << "\n";
 	std::cin >> balance;
 	User dummy(username, balance);
-	int user_id = User::users_.size() - 1;
 
 	int n;
 	int id;
@@ -38,9 +37,9 @@ void interactiveRun(Pipeline<Order>& pipeline) {
 	std::cin >> n;
 	std::vector<Order> orders;
 	for (int i = 1; i <= n; i++) {
-		std::cout << "Enter order number " << i << " in the format  <product_id  quantity>" << "\n";
+		std::cout << "Enter order number " << i << " in the format  { product_id  quantity }" << "\n";
 		std::cin >> id >> quantity;
-		orders.push_back(Order(user_id, id, quantity));
+		orders.push_back(Order(dummy.id, id, quantity));
 	}
 
 	for(Order o : orders) {

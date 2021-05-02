@@ -21,7 +21,7 @@ void Order::displayReport() {
 		std::cout << "Order Status: FAILED" << std::endl;
 	else
 		std::cout << "Order Status: SUCCESS" << std::endl;
-	std::cout << "Product Information: ";
+	std::cout << "Product Information: " << std::endl;
 	prod->getInfo();
 	std::cout << "Quantity: " << quantity << std::endl;
 	std::cout << "Total Price: " << totalPrice << std::endl;

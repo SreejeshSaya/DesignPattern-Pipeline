@@ -11,14 +11,14 @@
 
 [x] Exit program by terminating threads
 
-[] orderReportProcessor
+[x] orderReportProcessor
 
 [] Plugin orderstatus
 
-[] user class - add username
+[x] user class - add username
 
 [] Random sleep for threads
 
-[] make users_ private
+[x] make users_ private
 
-[] make products_ private
+[x] make products_ private

@@ -19,7 +19,6 @@ void User::displayInfo() {
     return;
 }
 
-
 float User::getBalance(unsigned int uid) {
     if(uid > users_.size())
         return 0;
