@@ -3,9 +3,9 @@
 ## Integration and Testing
 [x] Interactive ui
 
-[] Print statement lock
+[x] Print statement lock
 
-[] Circuit Breaker Implementation
+[x] Circuit Breaker Implementation
 
 [x] Date-Time formatting in stages
 
@@ -17,7 +17,7 @@
 
 [x] user class - add username
 
-[] Random sleep for threads
+[x] Random sleep for threads
 
 [x] make users_ private
 

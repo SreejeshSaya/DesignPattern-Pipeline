@@ -13,9 +13,7 @@ User::User(std::string name, float b):
 }
 
 void User::displayInfo() {
-    std::cout << "Name: " << username << std::endl;
-    std::cout << "User Id: " << id << std::endl;
-    std::cout << "Balance: " << balance << std::endl;
+    std::cout << "Name: " << username << "\tID: " << id  << "\tBalance: " << balance << std::endl;
     return;
 }
 

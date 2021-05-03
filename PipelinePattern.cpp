@@ -21,9 +21,9 @@ bool reportOrder(Order& order) {
 void interactiveRun(Pipeline<Order>& pipeline) {
 	std::string username;
 	float balance;
-	std::cout << "Enter your username" << "\n";
+	std::cout << "Username: ";
 	std::cin >> username;
-	std::cout << "Enter your account balance" << "\n";
+	std::cout << "Account balance: ";
 	std::cin >> balance;
 	User dummy(username, balance);
 
@@ -33,14 +33,17 @@ void interactiveRun(Pipeline<Order>& pipeline) {
 
 	std::cout << "The following products are available for you to place an order:" << "\n";
 	Product::listProducts();
-	std::cout << "Enter the number of orders you want to place" << "\n";
+	std::cout << "\nEnter the number of orders you want to place" << "\n";
 	std::cin >> n;
 	std::vector<Order> orders;
+	std::cout << "ORDER FORMAT < ProductID Quantity >" << std::endl;
 	for (int i = 1; i <= n; i++) {
-		std::cout << "Enter order number " << i << " in the format  { product_id  quantity }" << "\n";
+		std::cout << "Order {" << i << "} : ";
 		std::cin >> id >> quantity;
 		orders.push_back(Order(dummy.id, id, quantity));
 	}
+	
+	std::cout << std::endl;
 
 	for(Order o : orders) {
 		pipeline.invoke(o);
