@@ -11,18 +11,19 @@ Pipeline<T>::Pipeline(){
 
 template <typename T>
 void Pipeline<T>::registerOperation(IOperation<T>* operation) {
-	operation->Next = nullptr;
-	operation->Terminate = nullptr;
 	if (!operations.empty()) {
 		operations.back()->Next = operation;
-		// for loop here that iterates through all operations and points their terminate to this operation.
 	}
 	operations.push_back(operation);
 }
 
 template <typename T>
 void Pipeline<T>::invoke(T& data) {
-	//std::cout << "IN PIPELINE::INVOKE\n";
+
+	for (auto operation : operations){
+		operation->Terminate = operations.back();
+	}
+	operations.back()->Terminate = nullptr;
 	IOperation<Order> *op = (!operations.empty()) ? operations.front() : nullptr;
 	if (op == nullptr)
 		std::cout << "PIPELINE EMPTY!" << std::endl;
