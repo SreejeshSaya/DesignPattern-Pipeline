@@ -5,17 +5,22 @@
 #include <thread>   
 #include <chrono>
 #include <future>
+#include <cstdlib>
 
 template<typename T>
 class Processor : public IOperation<T> {   
 private:
-    std::thread t_;
+    std::thread _t;
     using IOperation<T>::Next;
     using IOperation<T>::Terminate;
     std::atomic_bool stopLoop;
 
     static void Sleep() {
-        std::this_thread::sleep_for(std::chrono::seconds(3));
+        unsigned short s;
+        _rdrand16_step(&s);
+        s = (s % 50) + 1;
+        //std::cout << "Sleep : " << s << std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(s*s));
     }
 
     Buffer<T> queue;
@@ -38,7 +43,7 @@ private:
 
 public:
     Processor():
-        t_(&Processor::Run, this), stopLoop(false)
+        _t(&Processor::Run, this), stopLoop(false)
     {}
 
     void invoke(T& data) { queue.push(data); }
@@ -46,7 +51,7 @@ public:
         stopLoop = true;
         Order tmp(0, 0, 0);
         invoke(tmp);
-        t_.join();
+        _t.join();
     }
 };
 
