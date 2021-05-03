@@ -17,7 +17,7 @@ protected:
         char createT[26];
         ctime_s(createT, 26, &order.creationTime);
         createT[24] = '\0';
-        std::cout << "Order {" << order.orderId << "} " << "CREATED : { " << createT << " }" << std::endl;
+        std::cout << "[CREATED] : Order {" << order.orderId << "} Time: " << createT << "\n" << std::endl;
         orders.push_back(order);
         return true;
     }

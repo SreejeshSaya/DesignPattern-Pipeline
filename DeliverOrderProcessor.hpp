@@ -17,7 +17,7 @@ protected:
         char deliTime[26];
         ctime_s(deliTime, 26, &order.deliveryTime);
         deliTime[24] = '\0';
-        std::cout << "Order {" << order.orderId << "} DELIVERED : { " << deliTime << " }" << std::endl;
+        std::cout << "[DELIVERED] : Order {" << order.orderId << "} Time: " << deliTime << "\n" << std::endl;
         return true;
     }
 };

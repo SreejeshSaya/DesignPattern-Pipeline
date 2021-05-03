@@ -10,12 +10,13 @@ class ReportOrderProcessor : public Processor<Order> {
 protected:
 	bool Process(Order& order) {
 		unsigned int uid = order.userId;
-		std::cout << "--- ORDER INVOICE ---" << std::endl;
+		std::cout << "\n--- ORDER { " << order.orderId << " } INVOICE ---" << std::endl;
 		User* user = User::getUser(uid);
-		std::cout << "User Details ---" << std::endl;
+		std::cout << "User Details --- ";
 		user->displayInfo();
 		std::cout << "Order Details ---" << std::endl;
 		order.displayReport();
+		std::cout << std::endl;
 		return true;
 	}
 };
