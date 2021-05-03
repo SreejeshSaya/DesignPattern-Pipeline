@@ -11,10 +11,11 @@ Pipeline<T>::Pipeline(){
 
 template <typename T>
 void Pipeline<T>::registerOperation(IOperation<T>* operation) {
-	operation->Next = success;
-	operation->Terminate = fail;
+	operation->Next = nullptr;
+	operation->Terminate = nullptr;
 	if (!operations.empty()) {
 		operations.back()->Next = operation;
+		// for loop here that iterates through all operations and points their terminate to this operation.
 	}
 	operations.push_back(operation);
 }
@@ -22,26 +23,10 @@ void Pipeline<T>::registerOperation(IOperation<T>* operation) {
 template <typename T>
 void Pipeline<T>::invoke(T& data) {
 	//std::cout << "IN PIPELINE::INVOKE\n";
-	IOperation<Order> *op = (!operations.empty()) ? operations.front() : fail;
+	IOperation<Order> *op = (!operations.empty()) ? operations.front() : nullptr;
+	if (op == nullptr)
+		std::cout << "PIPELINE EMPTY!" << std::endl;
 	op->invoke(data);
-}
-
-template <typename T>
-bool Pipeline<T>::Success(T& data) {
-	Continue(data);
-	return true;
-}
-
-template <typename T> bool Pipeline<T>::Fail(T& data) {
-	Continue(data);
-	return false;
-}
-
-template <typename T>
-void Pipeline<T>::Continue(T& data) {
-	if (Next != nullptr) {
-		Next->invoke(data);
-	}
 }
 
 template <typename T>
