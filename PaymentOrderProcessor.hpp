@@ -20,7 +20,7 @@ protected:
             return true;
         }
         else {
-            std::cout << "[PAYMENT] FAIL! : Order {" << order.orderId << "} Insufficient Balance for User " << order.userId << ": {" << balance << " } ; Need {" << (-1*expected) << " } more\n" << std::endl;
+            std::cout << "[PAYMENT] FAIL! : Order {" << order.orderId << "} Insufficient Balance for User " << order.userId << ": { " << balance << " } ; Need { " << (-1*expected) << " } more\n" << std::endl;
             //std::cout<<"Insufficient Balance : User {"<<order.userId<<"} Balance {"<<balance<<"} USD | Order {"<<order.orderId<<"} : {"<<order.totalPrice<<"} USD\n" << std::endl;
             order.status = Order::Canceled;
             return false;
