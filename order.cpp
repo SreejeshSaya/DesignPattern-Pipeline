@@ -9,13 +9,17 @@ Order::Order(unsigned int uid, unsigned int pid, unsigned int q):
 
 void Order::displayReport() {
 	Product* prod = Product::getProduct(productId);
-	char createT[26];
-	ctime_s(createT, 26, &creationTime);
+	// char createT[26];
+	// ctime_s(createT, 26, &creationTime);
+	// createT[24] = '\0';
+	// char deliT[26];
+	// ctime_s(deliT, 26, &deliveryTime);
+	// deliT[24] = '\0';
+	char *createT, *deliT;
+	createT = ctime(&creationTime);
+	deliT = ctime(&deliveryTime);
 	createT[24] = '\0';
-	char deliT[26];
-	ctime_s(deliT, 26, &deliveryTime);
 	deliT[24] = '\0';
-
 	std::cout << "Order ID: " << orderId << std::endl;
 	if (status != Delivered)
 		std::cout << "Order Status: FAILED" << std::endl;

@@ -6,6 +6,7 @@
 #include <chrono>
 #include <future>
 #include <cstdlib>
+#include <immintrin.h>
 
 template<typename T>
 class Processor : public IOperation<T> {   
