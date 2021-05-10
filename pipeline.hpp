@@ -8,7 +8,7 @@
 #include "order.hpp"
 
 template <typename T>
-class Pipeline : public IOperation<T> {
+class Pipeline {
 private:
 	std::vector<IOperation<T>*> operations;
 
