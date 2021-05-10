@@ -16,6 +16,7 @@ public:
 	Pipeline();
 	void registerOperation(IOperation<T>*);
 	void invoke(T&);
+	void registerCB();
 	void terminate();
 };
 
@@ -32,7 +33,6 @@ void Pipeline<T>::registerOperation(IOperation<T>* operation) {
 
 template <typename T>
 void Pipeline<T>::invoke(T& data) {
-
 	for (auto operation : operations) {
 		operation->Terminate = operations.back();
 	}
@@ -41,6 +41,13 @@ void Pipeline<T>::invoke(T& data) {
 	if (op == nullptr)
 		std::cout << "PIPELINE EMPTY!" << std::endl;
 	op->invoke(data);
+}
+
+template <typename T>
+void Pipeline<T>::registerCB() {
+	for (auto operation : operations)
+		operation->Terminate = operations.back();
+	operations.back()->Terminate = nullptr;
 }
 
 template <typename T>

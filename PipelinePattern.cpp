@@ -66,7 +66,7 @@ int main() {
 	pipeline.registerOperation(pap);
 	pipeline.registerOperation(dop);
 	pipeline.registerOperation(rop);
-
+	pipeline.registerCB();
 	interactiveRun(pipeline);
 	
 	return 1;
