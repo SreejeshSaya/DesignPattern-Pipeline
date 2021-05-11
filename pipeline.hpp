@@ -10,7 +10,9 @@
 template <typename T>
 class Pipeline {
 private:
-	std::vector<IOperation<T>*> operations;
+	// std::vector<IOperation<T>*> operations;
+	IOperation<T>* head;
+	IOperation<T>* tail;
 
 public:
 	Pipeline();
@@ -21,40 +23,52 @@ public:
 };
 
 template <typename T>
-Pipeline<T>::Pipeline() {}
+Pipeline<T>::Pipeline():
+	head(nullptr), tail(nullptr)
+{}
 
 template <typename T>
 void Pipeline<T>::registerOperation(IOperation<T>* operation) {
-	if (!operations.empty()) {
-		operations.back()->Next = operation;
+	// if (!operations.empty()) {
+	// 	operations.back()->Next = operation;
+	// }
+	// operations.push_back(operation);
+	if (head == nullptr) {
+		head = operation;
+		tail = operation;
 	}
-	operations.push_back(operation);
+	else {
+		tail->Next = operation;
+		tail = operation;
+	}
 }
 
 template <typename T>
 void Pipeline<T>::invoke(T& data) {
-	for (auto operation : operations) {
-		operation->Terminate = operations.back();
-	}
-	operations.back()->Terminate = nullptr;
-	IOperation<Order>* op = (!operations.empty()) ? operations.front() : nullptr;
-	if (op == nullptr)
+	IOperation<Order>* op = (head != nullptr) ? head : nullptr;
+	if (op == nullptr) {
 		std::cout << "PIPELINE EMPTY!" << std::endl;
+		return;
+	}
+
 	op->invoke(data);
 }
 
 template <typename T>
 void Pipeline<T>::registerCB() {
-	for (auto operation : operations)
-		operation->Terminate = operations.back();
-	operations.back()->Terminate = nullptr;
+	IOperation<T> *p = head;
+	while(p != nullptr) {
+		p->Terminate = tail;
+		p = p->Next;
+	}
 }
 
 template <typename T>
 void Pipeline<T>::terminate() {
-	for (IOperation<T>* operation : operations) {
-		operation->terminate();
-	}
+	IOperation<T> *p = head;
+
+	while(p != nullptr)
+		p->terminate();
 }
 
 #endif
