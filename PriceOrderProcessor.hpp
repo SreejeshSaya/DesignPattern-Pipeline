@@ -15,7 +15,7 @@ protected:
         order.status = Order::Priced;
 
         //std::cout << "Order {" << order.orderId << "} PROCESSED: total Price -> {" << order.totalPrice << "}\n" << std::endl;
-        std::cout << "[PROCESSED] : Order {" << order.orderId << "} - Total Price { " << order.totalPrice << " }\n" << std::endl;
+        std::cout << "PIPELINE:" << order.pNum << " --- [PROCESSED] : Order {" << order.orderId << "} - Total Price { " << order.totalPrice << " }\n" << std::endl;
         return true;
     }
 
