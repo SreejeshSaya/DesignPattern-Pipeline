@@ -15,7 +15,7 @@ protected:
         float expected = balance - order.totalPrice;
         if(expected >= 0) {
             //std::cout << "Payment Order {" << order.orderId << "} User {" << order.userId << "} : {" << order.totalPrice << "} Rs. | Balance {" << balance << "} -> {" << expected << "}\n" << std::endl;
-            std::cout << "PIPELINE:" << order.pNum << " --- [PAYMENT] : Order { " << order.orderId << "} Paid ---- Balance { " << expected << " }\n" << std::endl;
+            std::cout << "PIPELINE:" << order.pNum << " --- [PAYMENT] : Order { " << order.orderId << "} Price: { " << order.totalPrice << " } Paid ---- Balance { " << expected << " }\n" << std::endl;
 
             User::updateBalance(order.userId, expected);
             mtx.unlock();

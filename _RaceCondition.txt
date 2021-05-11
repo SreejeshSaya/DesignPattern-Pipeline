@@ -1,0 +1,91 @@
+ORDER FORMAT < ProductID Quantity >
+PIPELINE 1
+Order {1} : Order {2} : Order {3} : PIPELINE 2
+Order {4} : Order {5} : Order {6} : PIPELINE 3
+Order {7} : Order {8} : Order {9} : 
+PIPELINE:3[CREATED] : Order {7} Time: Tue May 11 10:26:17 2021
+
+PIPELINE:3[PROCESSED] : Order {7} - Total Price { PIPELINE:2[CREATED] : Order {4} Time: Tue May 11 10:26:17 2021
+
+120 }
+
+PIPELINE:1 --- [CREATED] : Order {1} Time: Tue May 11 10:26:17 2021
+
+PIPELINE:2 --- [PROCESSED] : Order {4} - Total Price { 120 }
+
+--- RACE CONDITION ---
+PIPELINE:2 --- [PAYMENT] : Order {4} Paid ---- Balance { 880 }
+
+PIPELINE:3 --- [PAYMENT] : Order {7} Paid ---- Balance { 880 }
+----------------------
+
+PIPELINE:1 --- [PROCESSED] : Order {1} - Total Price { 120 }
+
+PIPELINE:2 --- [DELIVERED] : Order {4} Time: Tue May 11 10:26:17 2021
+
+PIPELINE:1 --- [PAYMENT] : Order {1} Paid ---- Balance { 760 }
+
+PIPELINE:2 --- ACCOUNT DETAILS --- Order { 4 } 
+User Details --- Name: SJ	ID: 3	Balance: 760
+
+PIPELINE:1 --- [DELIVERED] : Order {1} Time: Tue May 11 10:26:17 2021
+
+PIPELINE:1 --- ACCOUNT DETAILS --- Order { 1 } 
+User Details --- Name: SJ	ID: 3	Balance: 760
+
+PIPELINE:3[CREATED] : Order {8} Time: Tue May 11 10:26:17 2021
+
+PIPELINE:3[PROCESSED] : Order {8} - Total Price { 80 }
+
+PIPELINE:3 --- [PAYMENT] : Order {8} Paid ---- Balance { 680 }
+
+PIPELINE:1[CREATED] : Order {2} Time: Tue May 11 10:26:17 2021
+
+PIPELINE:1[PROCESSED] : Order {2} - Total Price { 80 }
+
+PIPELINE:2[CREATED] : Order {5} Time: Tue May 11 10:26:17 2021
+
+PIPELINE:1 --- [PAYMENT] : Order {2} Paid ---- Balance { 600 }
+
+PIPELINE:2[PROCESSED] : Order {5} - Total Price { 80 }
+
+PIPELINE:2 --- [PAYMENT] : Order {5} Paid ---- Balance { 520 }
+
+PIPELINE:1[DELIVERED] : Order {2} Time: Tue May 11 10:26:17 2021
+
+PIPELINE:1 --- ACCOUNT DETAILS --- Order { 2 } 
+User Details --- Name: SJ	ID: 3	Balance: 520
+
+PIPELINE:2[DELIVERED] : Order {5} Time: Tue May 11 10:26:17 2021
+
+PIPELINE:2 --- ACCOUNT DETAILS --- Order { 5 } 
+User Details --- Name: SJ	ID: 3	Balance: 520
+
+PIPELINE:3[CREATED] : Order {9} Time: Tue May 11 10:26:18 2021
+
+PIPELINE:2[CREATED] : Order {6} Time: Tue May 11 10:26:18 2021
+
+PIPELINE:1[CREATED] : Order {3} Time: Tue May 11 10:26:18 2021
+
+PIPELINE:3[PROCESSED] : Order {9} - Total Price { 50 }
+
+PIPELINE:2[PROCESSED] : Order {6} - Total Price { 50 }
+
+PIPELINE:2 --- [PAYMENT] : Order {6} Paid ---- Balance { 470 }
+
+PIPELINE:1[PROCESSED] : Order {3} - Total Price { 50 }
+
+PIPELINE:3 --- [PAYMENT] : Order {9} Paid ---- Balance { 420 }
+
+PIPELINE:2[DELIVERED] : Order {6} Time: Tue May 11 10:26:18 2021
+
+PIPELINE:1 --- [PAYMENT] : Order {3} Paid ---- Balance { 370 }
+
+PIPELINE:2 --- ACCOUNT DETAILS --- Order { 6 } 
+User Details --- Name: SJ	ID: 3	Balance: 370
+
+PIPELINE:1[DELIVERED] : Order {3} Time: Tue May 11 10:26:18 2021
+
+PIPELINE:1 --- ACCOUNT DETAILS --- Order { 3 } 
+User Details --- Name: SJ	ID: 3	Balance: 370
+
