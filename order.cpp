@@ -2,8 +2,8 @@
 #include "order.hpp"
 #include "product.hpp"
 
-Order::Order(unsigned int uid, unsigned int pid, unsigned int q):
-	orderId(++count_), userId(uid), productId(pid), quantity(q), status(New),
+Order::Order(unsigned int uid, unsigned int pid, unsigned int q, int p):
+	orderId(++count_), userId(uid), productId(pid), quantity(q), status(New), pNum(p),
 	creationTime(time(0)), productPrice(0.0), totalPrice(0.0), deliveryTime(time(0)) {
 }
 

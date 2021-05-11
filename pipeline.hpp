@@ -66,9 +66,14 @@ void Pipeline<T>::registerCB() {
 template <typename T>
 void Pipeline<T>::terminate() {
 	IOperation<T> *p = head;
+	IOperation<T> *t = head;
 
-	while(p != nullptr)
+	while(p != nullptr) {
+		t = p->Next;
 		p->terminate();
+		p = t;
+		std::cout << "Terminate --- " << p << std::endl;
+	}
 }
 
 #endif
