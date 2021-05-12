@@ -4,7 +4,6 @@
 #include "order.hpp"
 #include "pipeline.hpp"
 #include "user.hpp"
-#include "operation.hpp"
 #include "CreateOrderProcessor.hpp"
 #include "PriceOrderProcessor.hpp"
 #include "PaymentOrderProcessor.hpp"

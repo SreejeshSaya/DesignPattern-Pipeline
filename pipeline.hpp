@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include "ioperation.hpp"
-#include "operation.hpp"
 #include "order.hpp"
 
 template <typename T>
