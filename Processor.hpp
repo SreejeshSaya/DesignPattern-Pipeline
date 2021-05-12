@@ -20,7 +20,6 @@ private:
         unsigned short s;
         _rdrand16_step(&s);
         s = (s % 50) + 1;
-        //std::cout << "Sleep : " << s << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(s*s));
     }
 

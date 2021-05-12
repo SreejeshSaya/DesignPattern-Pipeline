@@ -9,7 +9,6 @@
 template <typename T>
 class Pipeline {
 private:
-	// std::vector<IOperation<T>*> operations;
 	IOperation<T>* head;
 	IOperation<T>* tail;
 
@@ -28,10 +27,6 @@ Pipeline<T>::Pipeline():
 
 template <typename T>
 void Pipeline<T>::registerOperation(IOperation<T>* operation) {
-	// if (!operations.empty()) {
-	// 	operations.back()->Next = operation;
-	// }
-	// operations.push_back(operation);
 	if (head == nullptr) {
 		head = operation;
 		tail = operation;
@@ -66,8 +61,10 @@ template <typename T>
 void Pipeline<T>::terminate() {
 	IOperation<T> *p = head;
 
-	while(p != nullptr)
+	while(p != nullptr) {	
 		p->terminate();
+		p = p->Next;
+	}
 }
 
 #endif

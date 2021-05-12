@@ -1,4 +1,3 @@
-// NOT CLEAR
 #ifndef PRODUCT_H
 #define PRODUCT_H
 

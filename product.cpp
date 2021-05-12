@@ -4,7 +4,7 @@
 Product::Product(std::string name, float pr):
 	pName(name), id(count_++), price(pr) 
 {
-     products_.push_back(*this);
+	products_.push_back(*this);
 }
 
 void Product::getInfo() {

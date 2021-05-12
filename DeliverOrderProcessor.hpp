@@ -1,5 +1,3 @@
-
-
 #ifndef DELIVER_ORDER_H
 #define DELIVER_ORDER_H
 
@@ -14,8 +12,6 @@ protected:
     bool Process(Order& order) {
         order.deliveryTime = std::time(0);
         order.status = Order::Delivered;
-        // char deliTime[26];
-        // ctime_s(deliTime, 26, &order.deliveryTime);
         char *deliTime;
         deliTime = ctime(&order.deliveryTime);
         deliTime[24] = '\0';
