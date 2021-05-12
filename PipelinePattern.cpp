@@ -20,9 +20,7 @@ bool reportOrder(Order& order) {
 void interactiveRun(Pipeline<Order>& p1, Pipeline<Order>& p2, Pipeline<Order>& p3) {
 	std::string username;
 	float balance;
-	// std::cout << "Username: ";
 	std::cin >> username;
-	// std::cout << "Account balance: ";
 	std::cin >> balance;
 	User dummy(username, balance);
 
@@ -30,9 +28,6 @@ void interactiveRun(Pipeline<Order>& p1, Pipeline<Order>& p2, Pipeline<Order>& p
 	int id;
 	int quantity;
 
-	// std::cout << "The following products are available for you to place an order:" << "\n";
-	// Product::listProducts();
-	// std::cout << "\nEnter the number of orders you want to place" << "\n";
 	std::cin >> n;
 	std::vector<Order> orders1;
 	std::vector<Order> orders2;
@@ -69,19 +64,9 @@ void interactiveRun(Pipeline<Order>& p1, Pipeline<Order>& p2, Pipeline<Order>& p
 	}
 
 	std::this_thread::sleep_for(std::chrono::seconds(orders1.size()*3));
-	// p1.terminate();
-	// p2.terminate();
-	// p3.terminate();
 }
 
 int main() {
-	// Pipeline<Order> pipeline1;
-	// CreateOrderProcessor* cop1 = new CreateOrderProcessor();
-	// PriceOrderProcessor* prp1 = new PriceOrderProcessor();
-	// PaymentOrderProcessor* pap1 = new PaymentOrderProcessor();
-	// DeliverOrderProcessor* dop1 = new DeliverOrderProcessor();
-	// ReportOrderProcessor* rop1 = new ReportOrderProcessor();
-
 	Pipeline<Order> pipeline1;
 	CreateOrderProcessor* cop1 = new CreateOrderProcessor();
 	PriceOrderProcessor* prp1 = new PriceOrderProcessor();
