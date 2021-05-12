@@ -14,7 +14,7 @@ protected:
         char *createT;
         createT = ctime(&order.creationTime);
         createT[24] = '\0';
-        std::cout << "[CREATED] : Order {" << order.orderId << "} Time: " << createT << "\n" << std::endl;
+        std::cout << "PIPELINE:" << order.pNum << " --- [CREATED] : Order { " << order.orderId << " }\n" << std::endl;
         return true;
     }
 };

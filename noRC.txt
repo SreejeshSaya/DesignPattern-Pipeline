@@ -1,0 +1,44 @@
+
+PIPELINE 1
+Order {1} : Order {2} : PIPELINE 2
+Order {3} : Order {4} : PIPELINE 3
+Order {5} : Order {6} : 
+
+PIPELINE:2 --- [CREATED] : Order { 3 }
+
+PIPELINE:3 --- [CREATED] : Order { 5 }
+
+PIPELINE:3 --- [PROCESSED] : Order {5} - Total Price { 120 }
+
+PIPELINE:1 --- [CREATED] : Order { PIPELINE:13 --- [PAYMENT] : Order { 5} Price: {  }
+
+120PIPELINE:1 --- [PROCESSED] : Order {1} - Total Price {  } Paid ---- Balance { 120 }
+
+880 }
+
+PIPELINE:1 --- [PAYMENT] : Order { 1} Price: { 120 } Paid ---- Balance { 760 }
+
+PIPELINE:1 --- DELIVERED] : Order { 1 }
+
+PIPELINE:1 --- ACCOUNT DETAILS --- Order { 1 } 
+User Details --- Name: SJ	ID: 3	Balance: 760
+
+PIPELINE:1 --- [CREATED] : Order { 2 }
+
+PIPELINE:1 --- [PROCESSED] : Order {2} - Total Price { 80 }
+
+PIPELINE:PIPELINE:1 --- [PAYMENT] : Order { 2} Price: { 3 --- [CREATED] : Order { 6 }
+
+80 } Paid ---- Balance { PIPELINE:PIPELINE:3 --- [PROCESSED] : Order {6} - Total Price { 2 --- [CREATED] : Order { 4 }
+
+680 }
+
+80 }
+
+PIPELINE:3 --- [PAYMENT] : Order { 6} Price: { 80 } Paid ---- Balance { 600 }
+
+PIPELINE:1 --- DELIVERED] : Order { 2 }
+
+PIPELINE:1 --- ACCOUNT DETAILS --- Order { 2 } 
+User Details --- Name: SJ	ID: 3	Balance: 600
+
