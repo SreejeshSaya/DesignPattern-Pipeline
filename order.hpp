@@ -17,6 +17,7 @@ public:
 		Delivered,
 		Canceled
 	};
+	int pNum;
 	unsigned int orderId;
 	int status;
 	unsigned int userId;
@@ -27,7 +28,7 @@ public:
 	time_t creationTime;
 	time_t deliveryTime;
 
-	Order(unsigned int, unsigned int, unsigned int);
+	Order(unsigned int, unsigned int, unsigned int, int);
 	void displayReport();
 };
 

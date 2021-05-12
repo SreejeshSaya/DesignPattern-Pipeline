@@ -17,10 +17,7 @@ private:
     std::atomic_bool stopLoop;
 
     static void Sleep() {
-        unsigned short s;
-        _rdrand16_step(&s);
-        s = (s % 50) + 1;
-        std::this_thread::sleep_for(std::chrono::milliseconds(s*s));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 
     Buffer<T> queue;
@@ -39,20 +36,25 @@ private:
     }
 
     protected: 
-    virtual bool Process(T& data) = 0;
+    virtual bool Process(T&) = 0; 
+    static std::mutex mtx;
 
 public:
     Processor():
         _t(&Processor::Run, this), stopLoop(false)
-    {}
+    {
+        _t.detach();
+    }
 
     void invoke(T& data) { queue.push(data); }
     void terminate() {
         stopLoop = true;
-        Order tmp(0, 0, 0);
+        Order tmp(0, 0, 0, 0);
         invoke(tmp);
         _t.join();
     }
 };
 
+template <typename T>
+std::mutex Processor<T>::mtx;
 #endif

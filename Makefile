@@ -6,7 +6,7 @@ Pipeline: PipelinePattern.o order.o user.o product.o
 PipelinePattern.o: product.hpp order.hpp user.hpp pipeline.hpp\
 	CreateOrderProcessor.hpp PriceOrderProcessor.hpp\
 	PaymentOrderProcessor.hpp DeliverOrderProcessor.hpp\
-	ReportOrderProcessor.hpp
+	ReportOrderProcessor.hpp Processor.hpp
 	$(CC) -c -mrdrnd PipelinePattern.cpp
 
 order.o: order.cpp order.hpp product.hpp
